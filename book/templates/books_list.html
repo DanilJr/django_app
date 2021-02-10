@@ -1,0 +1,28 @@
+{% extends "bace.html"%}
+
+{% block content%}
+
+<div class="row mb-2">
+    {% for book in books_list%}
+<div class="col-md-6">
+    <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <div class="col p-4 d-flex flex-column position-static">
+
+    <h4 class="mb-0">Book name: {{book.name}}</h4>
+    <h4 class="mb-0">Description: {{book.description}}</h4>
+    <h4 class="mb-0">Count: {{book.count}}</h4>
+    <h4 class="mb-0">Authors: {{book.authors}}</h4>
+
+    <form action="{% url 'book_delete' book.id %}" method="post" class="in-line">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-danger">delete</button>
+    </form>
+        <a href="{% url 'book' book.id %}">in detail</a>
+
+      </div>
+
+    </div>
+  </div>
+    {% endfor %}
+</div>
+{% endblock %}

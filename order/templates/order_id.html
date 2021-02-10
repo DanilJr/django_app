@@ -1,0 +1,22 @@
+{% extends "bace.html" %}
+
+{% block content %}
+
+  <div class="col-md-6">
+    <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <div class="col p-4 d-flex flex-column position-static">
+        <h4 class="mb-0">User: <a href="{% url 'user_view_id' order_id.user.id %}">{{order_id.user.last_name}}</a></h4>
+        <h4 class="mb-0">Book: {{order_id.book.name}}</h4>
+        <div class="mb-1 text-muted">Time of create: {{order_id.created_at}}</div>
+        <div class="mb-1 text-muted">Time of end: {{order_id.end_at}}</div>
+        <div class="mb-1">Return time: {{order_id.plated_end_at}}</div>
+
+        <a href="{% url 'order_list' %}">back</a>
+      </div>
+    </div>
+  </div>
+
+
+
+
+{% endblock %}

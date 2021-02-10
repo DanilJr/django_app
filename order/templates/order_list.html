@@ -1,0 +1,31 @@
+{% extends "bace.html" %}
+
+{% block content %}
+
+
+<div class="row mb-2">
+  {% for order in order_list %}
+  <div class="col-md-6">
+    <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <div class="col p-4 d-flex flex-column position-static">
+        <h4 class="mb-0">User: {{order.user.first_name}}</h4>
+        <h4 class="mb-0">Book: {{order.book.name}}</h4>
+        <div class="mb-1 text-muted">Time of create: {{order.created_at}}</div>
+        <div class="mb-1 text-muted">Time of end: {{order.end_at}}</div>
+        <div class="mb-1">Return time: {{order.plated_end_at}}</div>
+
+
+        <form action="{% url 'order_delete' order.id %}" method="post" class="in-line">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-danger">delete</button>
+        </form>
+        <a href="{% url 'order_view_id' order.id %}">in detail</a>
+      </div>
+
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+
+{% endblock %}

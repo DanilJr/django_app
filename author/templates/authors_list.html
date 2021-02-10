@@ -1,0 +1,20 @@
+{% extends "author_main.html" %}
+
+
+{% block content %}
+
+    
+    {% for author in authors_list %}
+    
+    
+    <h3>Name: {{author.name}}</h3>
+    <h3>Surname: {{author.surname}}</h3>
+    <h3>Patronymic: {{author.patronymic}}</h3>
+     
+
+
+
+    {% endfor %}
+
+
+{% endblock %}

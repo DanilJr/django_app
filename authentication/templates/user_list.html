@@ -1,0 +1,33 @@
+{% extends "bace.html" %}
+
+{% block content %}
+
+
+<div class="row mb-2">
+  {% for user in user_list %}
+  <div class="col-md-6">
+    <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <div class="col p-4 d-flex flex-column position-static">
+        <h4 class="mb-0">First name: {{user.first_name}}</h4>
+        <h4 class="mb-0">Middle name: {{user.middle_name}}</h4>
+        <h4 class="mb-0">Last name: {{user.last_name}}</h4>
+        <div class="mb-1 text-muted">Email: {{user.email}}</div>
+        <div class="mb-1">Create user: {{user.created_at }}</div>
+        <div class="mb-1">Update user: {{user.updated_at }}</div>
+        <div class="mb-1">Role: {{user.role}}</div>
+        <div class="mb-1">Is active: {{user.is_active}}</div>
+
+        <form action="{% url 'user_delete' user.id %}" method="post" class="in-line">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-danger">delete</button>
+        </form>
+        <a href="{% url 'user_view_id' user.id %}">in detail</a>
+      </div>
+
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+
+{% endblock %}
